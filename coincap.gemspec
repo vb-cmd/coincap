@@ -4,7 +4,7 @@ require_relative "lib/coincap/version"
 
 Gem::Specification.new do |spec|
   spec.name = "coincap"
-  spec.version = CoinCap::VERSION
+  spec.version = Coincap::VERSION
   spec.authors = ["cosmic-1"]
   spec.email = ["crossdoh@gmail.com"]
 

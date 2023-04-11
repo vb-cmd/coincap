@@ -13,6 +13,28 @@ module Coincap
     URI_API = 'https://api.coincap.io/v2/markets'
 
     # Returns a list of all markets.
+    #
+    #   {
+    #     "data": [
+    #       {
+    #         "exchangeId": "bitstamp",
+    #         "rank": "1",
+    #         "baseSymbol": "BTC",
+    #         "baseId": "bitcoin",
+    #         "quoteSymbol": "USD",
+    #         "quoteId": "united-states-dollar",
+    #         "priceQuote": "6927.3300000000000000",
+    #         "priceUsd": "6927.3300000000000000",
+    #         "volumeUsd24Hr": "43341291.9576547008000000",
+    #         "percentExchangeVolume": "67.2199253376108585",
+    #         "tradesCount24Hr": "420721",
+    #         "updated": 1533581033590
+    #       },
+    #     ...
+    #     ],
+    #     "timestamp": 1533581173350
+    #   }
+    #
     # @param options [Hash] options for the request
     # @option options [String] :exchange_id (nil) Search by exchange id (e.g. 'binance')
     # @option options [String] :base_symbol (nil) Returns all containing the base symbol
