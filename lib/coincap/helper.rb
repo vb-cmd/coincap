@@ -8,12 +8,33 @@ require 'openssl'
 module Coincap
   # Helper module
   module Helper
+    def self.request_to_read_data(uri_string, **queries_hash)
+      uri = convert_hash_to_uri(uri_string, **queries_hash)
+
+      data_str = http_get(uri)
+
+      JSON.parse(data_str)
+    end
+
     class << self
-      def request_to_read_data(uri, **queries_hash)
-        str_queries = queries_hash.compact.map { |key, value| "#{key}=#{value}" }.join('&')
-        uri = URI("#{uri}#{queries_hash.empty? ? '' : "?#{str_queries}"}")
-        data_str = Net::HTTP.get(uri)
-        JSON.parse(data_str)
+      private
+
+      def http_get(uri)
+        config = Coincap.instance_variable_get(:@config)
+
+        headers = {
+          'Accept-Encoding': config.accept_encoding,
+          'Authorization': config.api_key.nil? ? nil : "Bearer #{config.api_key}"
+        }
+
+        headers.compact!
+
+        Net::HTTP.get(uri, headers)
+      end
+
+      def convert_hash_to_uri(uri, **queries_hash)
+        queries_str = queries_hash.compact.map { |key, value| "#{key}=#{value}" }.join('&')
+        URI("#{uri}#{queries_str.empty? ? '' : "?#{queries_str}"}")
       end
     end
   end

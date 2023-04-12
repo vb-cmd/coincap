@@ -1,6 +1,20 @@
 # coincap
 CoinCap is a useful tool for real-time pricing and market activity for over 1,000 cryptocurrencies. By collecting exchange data from thousands of markets, we are able to offer transparent and accurate data on asset price and availability.
 
+If you want to add 'api key' or change 'accept encoding', just call the 'configure' method.
+
+No API Key: 200 requests per minute
+API Key: 500 requests per minute
+
+Generate API KEY [here](https://coincap.io/api-key).
+
+```Ruby
+Coincap.configure do |config|
+  config.api_key = 'XXXXXXXXXXXXXXXXXXXXX'
+  config.accept_encoding = 'deflate' # Default gzip
+end
+```
+
 Detailed information [here](https://docs.coincap.io/).
 
 ## Assets Price

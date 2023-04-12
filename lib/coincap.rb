@@ -16,4 +16,24 @@ require_relative 'coincap/exchanges'
 # For any issues with transitioning from the old CoinCap API to the new,
 # please submit feedback via the zendesk link above!
 module Coincap
+  # Configuration class for Coincap
+  class Configuration
+    # @return [String] The API key to use for all requests.
+    attr_accessor :api_key
+    # @return [String] The accept encoding to use for all requests. Select 'gzip' or 'deflate'. Defaults to 'gzip'.
+    attr_accessor :accept_encoding
+
+    def initialize(api_key = nil, accept_encoding = 'gzip')
+      @api_key = api_key
+      @accept_encoding = accept_encoding
+    end
+  end
+
+  @config = Configuration.new
+
+  def self.configure
+    # @yield [Coincap::Configuration]
+    yield @config
+    @config.accept_encoding
+  end
 end

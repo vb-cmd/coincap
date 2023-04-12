@@ -10,46 +10,44 @@ module Coincap
   module Rates
     URI_API = 'https://api.coincap.io/v2/rates'
 
-    class << self
-      # Returns a list of all rates.
-      #
-      #   {
-      #     "data": [
-      #       {
-      #         "id": "barbadian-dollar",
-      #         "symbol": "BBD",
-      #         "currencySymbol": "$",
-      #         "type": "fiat",
-      #         "rateUsd": "0.5000000000000000"
-      #       },
-      #     ...
-      #     ],
-      #     "timestamp": 1536347807471
-      #   }
-      #
-      # @return [Hash]
-      def list
-        Helper.request_to_read_data(URI_API)
-      end
+    # Returns a list of all rates.
+    #
+    #   {
+    #     "data": [
+    #       {
+    #         "id": "barbadian-dollar",
+    #         "symbol": "BBD",
+    #         "currencySymbol": "$",
+    #         "type": "fiat",
+    #         "rateUsd": "0.5000000000000000"
+    #       },
+    #     ...
+    #     ],
+    #     "timestamp": 1536347807471
+    #   }
+    #
+    # @return [Hash]
+    def self.list
+      Helper.request_to_read_data(URI_API)
+    end
 
-      # Returns a single rate.
-      #
-      #   {
-      #     "data": {
-      #       "id": "bitcoin",
-      #       "symbol": "BTC",
-      #       "currencySymbol": "₿",
-      #       "type": "crypto",
-      #       "rateUsd": "6444.3132749056076909"
-      #     },
-      #     "timestamp": 1536347871542
-      #   }
-      #
-      # @param asset_id [String] The asset id (bitcoin)
-      # @return [Hash]
-      def single(asset_id)
-        Helper.request_to_read_data("#{URI_API}/#{asset_id}")
-      end
+    # Returns a single rate.
+    #
+    #   {
+    #     "data": {
+    #       "id": "bitcoin",
+    #       "symbol": "BTC",
+    #       "currencySymbol": "₿",
+    #       "type": "crypto",
+    #       "rateUsd": "6444.3132749056076909"
+    #     },
+    #     "timestamp": 1536347871542
+    #   }
+    #
+    # @param asset_id [String] The asset id (bitcoin)
+    # @return [Hash]
+    def self.single(asset_id)
+      Helper.request_to_read_data("#{URI_API}/#{asset_id}")
     end
   end
 end
