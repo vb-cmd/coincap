@@ -31,9 +31,8 @@ module Coincap
 
   @config = Configuration.new
 
+  # Configuration the Coincap API
   def self.configure
-    # @yield [Coincap::Configuration]
     yield @config
-    @config.accept_encoding
   end
 end

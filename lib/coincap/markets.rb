@@ -35,30 +35,27 @@ module Coincap
     #     "timestamp": 1533581173350
     #   }
     #
-    # @param options [Hash] options for the request
-    # @option options [String] :exchange_id (nil) Search by exchange id (e.g. 'binance')
-    # @option options [String] :base_symbol (nil) Returns all containing the base symbol
-    # @option options [String] :quote_symbol (nil) Returns all containing the quote symbol
-    # @option options [String] :base_id (nil) Returns all containing the base id
-    # @option options [String] :quote_id (nil) Returns all containing the quote id
-    # @option options [String] :asset_symbol (nil) Returns all assets containing symbol (base and quote)
-    # @option options [String] :asset_id (nil) Returns all assets containing id (base and quote)
-    # @option options [Integer] :limit (nil) Max limit of 2000
-    # @option options [Integer] :offset (nil) The number of results to skip
+    # @param [String] exchange_id (nil) Search by exchange id (e.g. 'binance')
+    # @param [String] base_symbol (nil) Returns all containing the base symbol
+    # @param [String] quote_symbol (nil) Returns all containing the quote symbol
+    # @param [String] base_id (nil) Returns all containing the base id
+    # @param [String] quote_id (nil) Returns all containing the quote id
+    # @param [String] asset_symbol (nil) Returns all assets containing symbol (base and quote)
+    # @param [String] asset_id (nil) Returns all assets containing id (base and quote)
+    # @param [Integer] limit (nil) Max limit of 2000
+    # @param [Integer] offset (nil) The number of results to skip
     # @return [Hash]
     def self.list(**options)
-      queries = {
-        'exchangeId': options[:exchange_id],
-        'baseSymbol': options[:base_symbol],
-        'quoteSymbol': options[:quote_symbol],
-        'baseId': options[:base_id],
-        'quoteId': options[:quote_id],
-        'assetSymbol': options[:asset_symbol],
-        'assetId': options[:asset_id],
-        'limit': options[:limit],
-        'offset': options[:offset]
-      }
-      Helper.request_to_read_data(URI_API, **queries)
+      Helper.request_to_read_data(URI_API,
+                                  'exchangeId': options[:exchange_id],
+                                  'baseSymbol': options[:base_symbol],
+                                  'quoteSymbol': options[:quote_symbol],
+                                  'baseId': options[:base_id],
+                                  'quoteId': options[:quote_id],
+                                  'assetSymbol': options[:asset_symbol],
+                                  'assetId': options[:asset_id],
+                                  'limit': options[:limit],
+                                  'offset': options[:offset])
     end
   end
 end

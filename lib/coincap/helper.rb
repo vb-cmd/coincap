@@ -23,11 +23,9 @@ module Coincap
         config = Coincap.instance_variable_get(:@config)
 
         headers = {
-          'Accept-Encoding': config.accept_encoding,
+          'Accept-Encoding': config.accept_encoding.nil? ? nil : config.accept_encoding,
           'Authorization': config.api_key.nil? ? nil : "Bearer #{config.api_key}"
-        }
-
-        headers.compact!
+        }.compact
 
         Net::HTTP.get(uri, headers)
       end

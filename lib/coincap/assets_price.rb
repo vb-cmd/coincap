@@ -45,20 +45,13 @@ module Coincap
     #     "timestamp": 1533581088278
     #   }
     #
-    # @param [Hash] options
-    # @option options [String] :search (nil) Search by asset id (bitcoin) or symbol (BTC)
-    # @option options [String] :ids (nil) Query with multiple ids=bitcoin,ethereum,monero
-    # @option options [Integer] :limit (nil) Max limit of 2000
-    # @option options [Integer] :offset (nil) Offset
+    # @param [String] search (nil) Search by asset id (bitcoin) or symbol (BTC)
+    # @param [String] ids (nil) Query with multiple ids=bitcoin,ethereum,monero
+    # @param [Integer] limit (nil) Max limit of 2000
+    # @param [Integer] offset (nil) Offset
     # @return [Hash]
-    def self.cryptocurrencies(**options)
-      quries = {
-        'search': options[:search],
-        'ids': options[:ids],
-        'limit': options[:limit],
-        'offset': options[:offset]
-      }
-      Helper.request_to_read_data(URI_API, **quries)
+    def self.cryptocurrencies(search: nil, ids: nil, limit: nil, offset: nil)
+      Helper.request_to_read_data(URI_API, search: search, ids: ids, limit: limit, offset: offset)
     end
 
     # Get single cryptocurrency
