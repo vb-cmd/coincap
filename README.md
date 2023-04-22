@@ -4,6 +4,7 @@ CoinCap is a useful tool for real-time pricing and market activity for over 1,00
 If you want to add 'api key' or change 'accept encoding', just call the 'configure' method.
 
 No API Key: 200 requests per minute
+
 API Key: 500 requests per minute
 
 Generate API KEY [here](https://coincap.io/api-key).
