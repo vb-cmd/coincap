@@ -49,7 +49,7 @@ module Coincap
     # @param [String] ids (nil) Query with multiple ids=bitcoin,ethereum,monero
     # @param [Integer] limit (nil) Max limit of 2000
     # @param [Integer] offset (nil) Offset
-    # @return [Hash]
+    # @return [String]
     def self.cryptocurrencies(search: nil, ids: nil, limit: nil, offset: nil)
       Helper.request_to_read_data(URI_API, search: search, ids: ids, limit: limit, offset: offset)
     end
@@ -74,7 +74,7 @@ module Coincap
     #   }
     #
     # @param [String] asset_id Asset id, for example, bitcoin
-    # @return [Hash]
+    # @return [String]
     def self.cryptocurrency(asset_id)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}")
     end
@@ -94,6 +94,7 @@ module Coincap
     #
     # @param [String] asset_id Asset id, for example, bitcoin
     # @param [Symbol] interval Select one from the list m1,m5,m15,m30,h1,h2,h6,h12,d1, for example, m1 or write a symbol, for example, :one_minute
+    # @return [String]
     def self.cryptocurrency_history(asset_id, interval)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}/history",
                                   interval: interval.is_a?(Symbol) ? TIME_INTERVAL[interval] : interval)
@@ -121,6 +122,7 @@ module Coincap
     # @param [String] asset_id Asset id, for example, bitcoin
     # @param [Integer] limit Max limit of 2000
     # @param [Integer] offset Offset
+    # @return [String]
     def self.cryptocurrency_with_markets(asset_id, limit: nil, offset: nil)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}/markets", limit: limit, offset: offset)
     end

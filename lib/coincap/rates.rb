@@ -26,7 +26,7 @@ module Coincap
     #     "timestamp": 1536347807471
     #   }
     #
-    # @return [Hash]
+    # @return [String]
     def self.list
       Helper.request_to_read_data(URI_API)
     end
@@ -45,7 +45,7 @@ module Coincap
     #   }
     #
     # @param asset_id [String] The asset id (bitcoin)
-    # @return [Hash]
+    # @return [String]
     def self.single(asset_id)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}")
     end

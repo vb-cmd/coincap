@@ -8,10 +8,14 @@ require 'openssl'
 module Coincap
   # Helper module
   module Helper
-    def self.request_to_read_data(uri_string, **queries_hash)
-      uri = convert_hash_to_uri(uri_string, **queries_hash)
-
-      data_str = http_get(uri)
+    class << self
+      # Request to read data
+      # @param uri_string [String] string of the uri
+      # @param queries_hash [Hash] queries hash for the request
+      # @return [String]
+      def request_to_read_data(uri_string, **queries_hash)
+        http_get convert_hash_to_uri(uri_string, **queries_hash)
+      end
 
       JSON.parse(data_str)
     end

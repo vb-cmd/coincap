@@ -33,7 +33,7 @@ module Coincap
     #     "timestamp": 1536605835421
     #   }
     #
-    # @return [Hash]
+    # @return [String]
     def self.list
       Helper.request_to_read_data(URI_API)
     end
@@ -56,7 +56,7 @@ module Coincap
     #   }
     #
     # @param exchange_id [String]
-    # @return [Hash]
+    # @return [String]
     def self.single(exchange_id)
       Helper.request_to_read_data("#{URI_API}/#{exchange_id}")
     end
