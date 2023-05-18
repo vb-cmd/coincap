@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TestRates < Minitest::Test
   def test_get_list_rates
-    data = Coincap::Rates.list
+    data = JSON.parse Coincap::Rates.list
 
     assert(data['data'].is_a?(Array))
     refute_empty(data['data'])
@@ -11,7 +11,7 @@ class TestRates < Minitest::Test
   end
 
   def test_get_single_rate
-    data = Coincap::Rates.single('bitcoin')
+    data = JSON.parse Coincap::Rates.single('bitcoin')
 
     assert(data['data'].is_a?(Hash))
     refute_empty(data['data'])

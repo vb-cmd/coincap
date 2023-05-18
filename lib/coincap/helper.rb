@@ -17,10 +17,6 @@ module Coincap
         http_get convert_hash_to_uri(uri_string, **queries_hash)
       end
 
-      JSON.parse(data_str)
-    end
-
-    class << self
       private
 
       def http_get(uri)

@@ -4,7 +4,7 @@ require 'test_helper'
 
 class TestAssetsPrice < Minitest::Test
   def test_get_all_coins
-    data = Coincap::AssetsPrice.cryptocurrencies
+    data = JSON.parse Coincap::AssetsPrice.cryptocurrencies
 
     assert(data.key?('data'))
     assert(data['data'].is_a?(Array))
@@ -15,7 +15,7 @@ class TestAssetsPrice < Minitest::Test
   end
 
   def test_get_single_coin
-    single = Coincap::AssetsPrice.cryptocurrency('bitcoin')
+    single = JSON.parse Coincap::AssetsPrice.cryptocurrency('bitcoin')
 
     assert single.key?('data')
     assert_equal('bitcoin', single['data']['id'])
@@ -25,7 +25,7 @@ class TestAssetsPrice < Minitest::Test
   end
 
   def test_get_cryptocurrency_history
-    history = Coincap::AssetsPrice.cryptocurrency_history('bitcoin', :one_minute)
+    history = JSON.parse Coincap::AssetsPrice.cryptocurrency_history('bitcoin', :one_minute)
 
     assert(history.key?('data'))
     assert(history['data'].is_a?(Array))
@@ -35,7 +35,7 @@ class TestAssetsPrice < Minitest::Test
   end
 
   def test_get_cryptocurrency_with_markets
-    data = Coincap::AssetsPrice.cryptocurrency_with_markets('bitcoin')
+    data = JSON.parse Coincap::AssetsPrice.cryptocurrency_with_markets('bitcoin')
 
     assert(data.key?('data'))
     assert(data['data'].is_a?(Array))
