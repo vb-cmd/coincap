@@ -47,15 +47,15 @@ module Coincap
     # @return [String]
     def self.list(**options)
       Helper.request_to_read_data(URI_API,
-                                  'exchangeId': options[:exchange_id],
-                                  'baseSymbol': options[:base_symbol],
-                                  'quoteSymbol': options[:quote_symbol],
-                                  'baseId': options[:base_id],
-                                  'quoteId': options[:quote_id],
-                                  'assetSymbol': options[:asset_symbol],
-                                  'assetId': options[:asset_id],
-                                  'limit': options[:limit],
-                                  'offset': options[:offset])
+                                  exchangeId: options[:exchange_id],
+                                  baseSymbol: options[:base_symbol],
+                                  quoteSymbol: options[:quote_symbol],
+                                  baseId: options[:base_id],
+                                  quoteId: options[:quote_id],
+                                  assetSymbol: options[:asset_symbol],
+                                  assetId: options[:asset_id],
+                                  limit: options[:limit],
+                                  offset: options[:offset])
     end
   end
 end
