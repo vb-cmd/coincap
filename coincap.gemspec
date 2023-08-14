@@ -5,7 +5,7 @@ require_relative 'lib/coincap/version'
 Gem::Specification.new do |spec|
   spec.name = 'coincap'
   spec.version = Coincap::VERSION
-  spec.authors = ['cosmic-1']
+  spec.authors = ['Vitalii Bakun']
   spec.email = ['crossdoh@gmail.com']
 
   spec.summary = 'CoinCap is a useful tool for real-time pricing and market activity for over 1,000 cryptocurrencies.'
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
-  spec.metadata['source_code_uri'] = 'https://github.com/Cosmic-1/coincap'
+  spec.metadata['source_code_uri'] = 'https://github.com/vitalii-bakun/coincap'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
