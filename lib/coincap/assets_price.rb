@@ -9,7 +9,7 @@ module Coincap
   # All values are translated into USD (United States Dollar)
   # and can be translated into other units of measurement through the /rates endpoint.
   module AssetsPrice
-    URI_API = 'https://api.coincap.io/v2/assets'
+    URI_API = "#{BASE_URI}#{VERSION_API}/assets"
 
     TIME_INTERVAL = {
       one_minute: 'm1',
@@ -73,7 +73,7 @@ module Coincap
     #     "timestamp": 1533581098863
     #   }
     #
-    # @param [String] asset_id Asset id, for example, bitcoin
+    # @param asset_id [String] Asset id, for example, bitcoin
     # @return [String]
     def self.cryptocurrency(asset_id)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}")
@@ -92,12 +92,32 @@ module Coincap
     #     "timestamp": 1533581103627
     #   }
     #
-    # @param [String] asset_id Asset id, for example, bitcoin
-    # @param [Symbol] interval Select one from the list m1,m5,m15,m30,h1,h2,h6,h12,d1, for example, m1 or write a symbol, for example, :one_minute
+    # You can call the method like this:
+    #
+    #   Coincap::AssetsPrice.cryptocurrency_history('bitcoin', :one_minute)
+    #
+    #   Coincap::AssetsPrice.cryptocurrency_history('bitcoin', 'm1')
+    #
+    #
+    # Or like this:
+    #
+    #   Coincap::AssetsPrice.cryptocurrency_history_one_minute('bitcoin')
+    #
+    # @param asset_id [String] Asset id, for example, bitcoin
+    # @param interval [Symbol|String] Select one from the list of TIME_INTERVAL values
+    #   for example, a string 'm1' or a symbol :one_minute
     # @return [String]
     def self.cryptocurrency_history(asset_id, interval)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}/history",
                                   interval: interval.is_a?(Symbol) ? TIME_INTERVAL[interval] : interval)
+    end
+
+    TIME_INTERVAL.each do |key, value|
+      class_eval <<~RUBY
+        def self.cryptocurrency_history_#{key}(asset_id)
+          self.cryptocurrency_history(asset_id, '#{value}')
+        end
+      RUBY
     end
 
     # Get price cryptocurrency with markets
@@ -119,9 +139,9 @@ module Coincap
     #     "timestamp": 1539289444052
     #   }
     #
-    # @param [String] asset_id Asset id, for example, bitcoin
-    # @param [Integer] limit Max limit of 2000
-    # @param [Integer] offset Offset
+    # @param asset_id [String] Asset id, for example, bitcoin
+    # @param limit [Integer] Max limit of 2000
+    # @param offset [Integer] Offset
     # @return [String]
     def self.cryptocurrency_with_markets(asset_id, limit: nil, offset: nil)
       Helper.request_to_read_data("#{URI_API}/#{asset_id}/markets", limit: limit, offset: offset)

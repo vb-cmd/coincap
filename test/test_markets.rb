@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require_relative 'test_base'
 
-class TestMarkets < Minitest::Test
+Markets = Coincap::Markets
+
+class TestMarkets < TestBase
   def test_get_all_markets
-    data = JSON.parse Coincap::Markets.list
+    data = JSON.parse Markets.list
     assert data.key?('data')
     assert(data['data'].is_a?(Array))
     assert(data.key?('timestamp'))

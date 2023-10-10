@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
     CoinCap is a useful tool for real-time pricing and market activity for over 1,000 cryptocurrencies.
   DESC
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 

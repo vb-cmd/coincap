@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require_relative 'test_base'
 
-class TestRates < Minitest::Test
+Rates = Coincap::Rates
+
+class TestRates < TestBase
   def test_get_list_rates
-    data = JSON.parse Coincap::Rates.list
+    data = JSON.parse Rates.list
 
     assert(data['data'].is_a?(Array))
     refute_empty(data['data'])
@@ -13,7 +15,7 @@ class TestRates < Minitest::Test
   end
 
   def test_get_single_rate
-    data = JSON.parse Coincap::Rates.single('bitcoin')
+    data = JSON.parse Rates.single('bitcoin')
 
     assert(data['data'].is_a?(Hash))
     refute_empty(data['data'])

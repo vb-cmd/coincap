@@ -1,3 +1,5 @@
+AllCops:
+  NewCops: enable
 Gemspec/DeprecatedAttributeAssignment: # new in 1.30
   Enabled: true
 Gemspec/DevelopmentDependencies: # new in 1.44
@@ -57,7 +59,7 @@ Lint/RequireRangeParentheses: # new in 1.32
 Lint/RequireRelativeSelfPath: # new in 1.22
   Enabled: true
 Lint/SymbolConversion: # new in 1.9
-  Enabled: true
+  Enabled: false
 Lint/ToEnumArguments: # new in 1.1
   Enabled: true
 Lint/TripleQuotes: # new in 1.9
@@ -93,7 +95,7 @@ Style/DataInheritance: # new in 1.49
 Style/DirEmpty: # new in 1.48
   Enabled: true
 Style/DocumentDynamicEvalDefinition: # new in 1.1
-  Enabled: true
+  Enabled: false
 Style/EmptyHeredoc: # new in 1.32
   Enabled: true
 Style/EndlessMethod: # new in 1.8
@@ -171,4 +173,6 @@ Style/StringChars: # new in 1.12
 Style/SwapValues: # new in 1.1
   Enabled: true
 Layout/LineLength: 
+  Enabled: false
+Style/EvalWithLocation:
   Enabled: false

@@ -11,7 +11,7 @@ module Coincap
   # For that purpose you will find an "updated" key for each exchange.
   # For more details into coin pairs and volume, see the /markets endpoint.
   module Exchanges
-    URI_API = 'https://api.coincap.io/v2/exchanges'
+    URI_API = "#{BASE_URI}#{VERSION_API}/exchanges"
 
     # Returns a list of all exchanges.
     #
@@ -55,7 +55,7 @@ module Coincap
     #     "timestamp": 1536605874069
     #   }
     #
-    # @param exchange_id [String]
+    # @param exchange_id [String] Search by exchange name, for example, kraken
     # @return [String]
     def self.single(exchange_id)
       Helper.request_to_read_data("#{URI_API}/#{exchange_id}")

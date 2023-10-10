@@ -1,20 +1,21 @@
 PATH
   remote: .
   specs:
-    coincap (0.1.3)
+    coincap (0.2.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
     json (2.6.3)
-    minitest (5.18.0)
+    minitest (5.20.0)
     net-http (0.3.2)
       uri
-    openssl (3.1.0)
+    openssl (3.2.0)
     rake (13.0.6)
-    uri (0.12.1)
+    uri (0.12.2)
 
 PLATFORMS
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -27,4 +28,4 @@ DEPENDENCIES
   uri (~> 0.12.1)
 
 BUNDLED WITH
-   2.4.10
+   2.4.20

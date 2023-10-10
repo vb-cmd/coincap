@@ -8,7 +8,7 @@ module Coincap
   # We offer fiat and top cryptocurrency translated rates.
   # Fiat rates are available through OpenExchangeRates.org.
   module Rates
-    URI_API = 'https://api.coincap.io/v2/rates'
+    URI_API = "#{BASE_URI}#{VERSION_API}/rates"
 
     # Returns a list of all rates.
     #

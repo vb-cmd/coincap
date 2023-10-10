@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require_relative 'test_base'
 
-class TestCoincap < Minitest::Test
+class TestCoincap < TestBase
   def test_that_it_has_a_version_number
     refute_nil ::Coincap::VERSION
   end

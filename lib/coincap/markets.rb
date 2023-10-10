@@ -10,7 +10,7 @@ module Coincap
   # All market data represents actual trades processed, orders on an exchange are not represented.
   # Data received from individual markets is used to calculate the current price of an asset.
   module Markets
-    URI_API = 'https://api.coincap.io/v2/markets'
+    URI_API = "#{BASE_URI}#{VERSION_API}/markets"
 
     # Returns a list of all markets.
     #
@@ -35,15 +35,15 @@ module Coincap
     #     "timestamp": 1533581173350
     #   }
     #
-    # @param [String] exchange_id (nil) Search by exchange id (e.g. 'binance')
-    # @param [String] base_symbol (nil) Returns all containing the base symbol
-    # @param [String] quote_symbol (nil) Returns all containing the quote symbol
-    # @param [String] base_id (nil) Returns all containing the base id
-    # @param [String] quote_id (nil) Returns all containing the quote id
-    # @param [String] asset_symbol (nil) Returns all assets containing symbol (base and quote)
-    # @param [String] asset_id (nil) Returns all assets containing id (base and quote)
-    # @param [Integer] limit (nil) Max limit of 2000
-    # @param [Integer] offset (nil) The number of results to skip
+    # @param exchange_id (nil) [String] Search by exchange id (e.g. 'binance')
+    # @param base_symbol (nil) [String] Returns all containing the base symbol
+    # @param quote_symbol (nil) [String] Returns all containing the quote symbol
+    # @param base_id (nil) [String] Returns all containing the base id
+    # @param quote_id (nil) [String] Returns all containing the quote id
+    # @param asset_symbol (nil) [String] Returns all assets containing symbol (base and quote)
+    # @param asset_id (nil) [String] Returns all assets containing id (base and quote)
+    # @param limit (nil) [Integer] Max limit of 2000
+    # @param offset (nil) [Integer] The number of results to skip
     # @return [String]
     def self.list(**options)
       Helper.request_to_read_data(URI_API,
