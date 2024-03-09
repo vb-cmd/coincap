@@ -6,6 +6,7 @@ require_relative 'coincap/helper'
 require_relative 'coincap/markets'
 require_relative 'coincap/rates'
 require_relative 'coincap/exchanges'
+require_relative 'coincap/prices'
 
 # CoinCap 2.0 RESTful API is currently in production!
 # The CoinCap team is excited to offer you new endpoints and more clarity on pricing!

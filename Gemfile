@@ -13,3 +13,5 @@ group :test do
   gem 'minitest', '~> 5.18'
   gem 'rake', '~> 13.0'
 end
+
+gem "websocket-client-simple", "~> 0.8.0"
