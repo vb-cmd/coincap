@@ -26,9 +26,9 @@ module Coincap
     #     "timestamp": 1536347807471
     #   }
     #
-    # @return [String]
+    # @return [Hash]
     def self.list
-      Helper.request_to_read_data(URI_API)
+      Helper.fetch_data(URI_API)
     end
 
     # Returns a single rate.
@@ -45,9 +45,9 @@ module Coincap
     #   }
     #
     # @param asset_id [String] The asset id (bitcoin)
-    # @return [String]
+    # @return [Hash]
     def self.single(asset_id)
-      Helper.request_to_read_data("#{URI_API}/#{asset_id}")
+      Helper.fetch_data("#{URI_API}/#{asset_id}")
     end
   end
 end

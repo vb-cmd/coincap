@@ -37,7 +37,7 @@ module Coincap
     def on_close(&on_close)
       @ws.on :close, &on_close
     end
-    
+
     # When error
     def on_error(&on_error)
       @ws.on :error, &on_error

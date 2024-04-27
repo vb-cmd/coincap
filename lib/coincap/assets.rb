@@ -8,7 +8,7 @@ module Coincap
   # meaning higher volume exchanges have more affect on this global price.
   # All values are translated into USD (United States Dollar)
   # and can be translated into other units of measurement through the /rates endpoint.
-  module AssetsPrice
+  module Assets
     URI_API = "#{BASE_URI}#{VERSION_API}/assets"
 
     TIME_INTERVAL = {
@@ -49,9 +49,9 @@ module Coincap
     # @param [String] ids (nil) Query with multiple ids=bitcoin,ethereum,monero
     # @param [Integer] limit (nil) Max limit of 2000
     # @param [Integer] offset (nil) Offset
-    # @return [String]
-    def self.cryptocurrencies(search: nil, ids: nil, limit: nil, offset: nil)
-      Helper.request_to_read_data(URI_API, search: search, ids: ids, limit: limit, offset: offset)
+    # @return [Hash]
+    def self.list(search: nil, ids: nil, limit: nil, offset: nil)
+      Helper.fetch_data(URI_API, search: search, ids: ids, limit: limit, offset: offset)
     end
 
     # Get single cryptocurrency
@@ -74,9 +74,9 @@ module Coincap
     #   }
     #
     # @param asset_id [String] Asset id, for example, bitcoin
-    # @return [String]
-    def self.cryptocurrency(asset_id)
-      Helper.request_to_read_data("#{URI_API}/#{asset_id}")
+    # @return [Hash]
+    def self.single(asset_id)
+      Helper.fetch_data("#{URI_API}/#{asset_id}")
     end
 
     # Get cryptocurrency history price
@@ -106,16 +106,20 @@ module Coincap
     # @param asset_id [String] Asset id, for example, bitcoin
     # @param interval [Symbol|String] Select one from the list of TIME_INTERVAL values
     #   for example, a string 'm1' or a symbol :one_minute
-    # @return [String]
-    def self.cryptocurrency_history(asset_id, interval)
-      Helper.request_to_read_data("#{URI_API}/#{asset_id}/history",
-                                  interval: interval.is_a?(Symbol) ? TIME_INTERVAL[interval] : interval)
+    # @param start_at [Integer] Start time in milliseconds
+    # @param end_at [Integer] End time in milliseconds
+    # @return [Hash]
+    def self.history(asset_id, interval, start_at = nil, end_at = nil)
+      Helper.fetch_data("#{URI_API}/#{asset_id}/history",
+                        interval: interval.is_a?(Symbol) ? TIME_INTERVAL[interval] : interval,
+                        start: start_at,
+                        end: end_at)
     end
 
     TIME_INTERVAL.each do |key, value|
       class_eval <<~RUBY
-        def self.cryptocurrency_history_#{key}(asset_id)
-          self.cryptocurrency_history(asset_id, '#{value}')
+        def self.history_#{key}(asset_id, start_at = nil, end_at = nil)
+          self.history(asset_id, '#{value}', start_at, end_at)
         end
       RUBY
     end
@@ -142,9 +146,9 @@ module Coincap
     # @param asset_id [String] Asset id, for example, bitcoin
     # @param limit [Integer] Max limit of 2000
     # @param offset [Integer] Offset
-    # @return [String]
-    def self.cryptocurrency_with_markets(asset_id, limit: nil, offset: nil)
-      Helper.request_to_read_data("#{URI_API}/#{asset_id}/markets", limit: limit, offset: offset)
+    # @return [Hash]
+    def self.markets(asset_id, limit: nil, offset: nil)
+      Helper.fetch_data("#{URI_API}/#{asset_id}/markets", limit: limit, offset: offset)
     end
   end
 end

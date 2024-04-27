@@ -16,9 +16,11 @@ module Coincap
       #
       # @param uri_string [String] String of the uri
       # @param queries_hash [Hash] Queries hash for the request
-      # @return [String]
-      def request_to_read_data(uri_string, **queries_hash)
-        http_get build_uri(uri_string, **queries_hash)
+      # @return [Hash] Hash of the response
+      def fetch_data(uri_string, **queries_hash)
+        url = build_uri(uri_string, **queries_hash)
+        data = http_get url
+        JSON.parse data
       end
 
       private

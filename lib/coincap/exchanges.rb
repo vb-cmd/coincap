@@ -33,9 +33,9 @@ module Coincap
     #     "timestamp": 1536605835421
     #   }
     #
-    # @return [String]
+    # @return [Hash]
     def self.list
-      Helper.request_to_read_data(URI_API)
+      Helper.fetch_data(URI_API)
     end
 
     # Returns a single exchange.
@@ -56,9 +56,9 @@ module Coincap
     #   }
     #
     # @param exchange_id [String] Search by exchange name, for example, kraken
-    # @return [String]
+    # @return [Hash]
     def self.single(exchange_id)
-      Helper.request_to_read_data("#{URI_API}/#{exchange_id}")
+      Helper.fetch_data("#{URI_API}/#{exchange_id}")
     end
   end
 end

@@ -44,9 +44,9 @@ module Coincap
     # @param asset_id (nil) [String] Returns all assets containing id (base and quote)
     # @param limit (nil) [Integer] Max limit of 2000
     # @param offset (nil) [Integer] The number of results to skip
-    # @return [String]
+    # @return [Hash]
     def self.list(**options)
-      Helper.request_to_read_data(URI_API,
+      Helper.fetch_data(URI_API,
                                   exchangeId: options[:exchange_id],
                                   baseSymbol: options[:base_symbol],
                                   quoteSymbol: options[:quote_symbol],

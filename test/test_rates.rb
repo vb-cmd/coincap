@@ -6,7 +6,7 @@ Rates = Coincap::Rates
 
 class TestRates < TestBase
   def test_get_list_rates
-    data = JSON.parse Rates.list
+    data = Rates.list
 
     assert(data['data'].is_a?(Array))
     refute_empty(data['data'])
@@ -15,7 +15,7 @@ class TestRates < TestBase
   end
 
   def test_get_single_rate
-    data = JSON.parse Rates.single('bitcoin')
+    data = Rates.single('bitcoin')
 
     assert(data['data'].is_a?(Hash))
     refute_empty(data['data'])

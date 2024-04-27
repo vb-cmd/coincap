@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    coincap (0.2.3)
+    coincap (0.3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -34,4 +34,4 @@ DEPENDENCIES
   websocket-client-simple (~> 0.8.0)
 
 BUNDLED WITH
-   2.5.3
+   2.5.6

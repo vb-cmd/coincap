@@ -20,7 +20,7 @@ Detailed information [here](https://docs.coincap.io/).
 
 ## Assets Price
 ```Ruby
-data = Coincap::AssetsPrice.cryptocurrencies
+data = Coincap::Assets.list
 ```
 ```JSON
     {
@@ -45,7 +45,7 @@ data = Coincap::AssetsPrice.cryptocurrencies
 ```
 
 ```Ruby
-data = Coincap::AssetsPrice.cryptocurrency('bitcoin')
+data = Coincap::Assets.single('bitcoin')
 ```
 ```JSON
       {
@@ -67,7 +67,15 @@ data = Coincap::AssetsPrice.cryptocurrency('bitcoin')
 ```
 
 ```Ruby
-data = Coincap::AssetsPrice.cryptocurrency_history('bitcoin', :one_minute)
+data = Coincap::Assets.history('bitcoin', :one_minute)
+```
+or
+```Ruby
+data = Coincap::Assets.history_one_minute('bitcoin')
+```
+and with timestamp
+```Ruby
+data = Coincap::Assets.history_one_minute('bitcoin', 1530403200000, 1533581103627)
 ```
 ```JSON
       {
@@ -83,7 +91,7 @@ data = Coincap::AssetsPrice.cryptocurrency_history('bitcoin', :one_minute)
 ```
 
 ```Ruby
-data = Coincap::AssetsPrice.cryptocurrency_with_markets('bitcoin')
+data = Coincap::Assets.markets('bitcoin')
 ```
 ```JSON
       {
